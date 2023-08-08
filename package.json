@@ -3,7 +3,8 @@
     "create-react-app": "^5.0.1",
     "react-bootstrap": "^2.8.0",
     "react-bootstrap-icons": "^1.10.3",
-    "react-multi-carousel": "^2.8.4"
+    "react-multi-carousel": "^2.8.4",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "gh-pages": "^5.0.0"
