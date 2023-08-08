@@ -1,8 +1,9 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import LinkIcon from '../assets/img/LinkIcon.svg'
-import GitIcon from '../assets/img/GitIcon.svg'
-import Rob from '../assets/img/Rob.svg'
+import LinkIcon from '../assets/img/LinkIcon.svg';
+import GitIcon from '../assets/img/GitIcon.svg';
+import Rob from '../assets/img/Rob.svg';
+import GitLogo from '../assets/img/gitLogo.png';
 
 export const NavBar = () => {
     const [activeLink, setActiveLink] = useState('home');
@@ -44,8 +45,9 @@ export const NavBar = () => {
             </Nav>
             <span className="navbar-text">
                 <div className="social-icon">
-                    <a href="#"><img src={LinkIcon} alt="" /></a>
-                    <a href="#"><img src={GitIcon} alt="" /></a>
+                    <a href="https://www.linkedin.com/in/rob-claus/"><img src={LinkIcon} /></a>
+                    <a href="https://github.com/Rclaus1"><img src={GitIcon} /></a>
+                    <a href="https://gitlab.com/Rclaus"><img src={GitLogo} /></a>
                 </div>
                 <button className="vvd" onClick={() => console.log('connect')}><span> Let's Connect </span></button>
             </span>
