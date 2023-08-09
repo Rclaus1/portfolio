@@ -23,7 +23,7 @@ export const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setButtonText('Sending...');
-        let response = await fetch(process.env.REACT_APP_MAILER, {
+        let response = await fetch("https://formspree.io/f/xaygenaq", {
             method: "POST",
             headers: {
                 "Content-Type": "Application/json;charset=utf-8",
