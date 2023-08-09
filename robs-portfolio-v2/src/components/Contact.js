@@ -23,7 +23,8 @@ export const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setButtonText('Sending...');
-        let response = await fetch("https://formspree.io/f/xaygenaq", {
+        const url = REACT_APP_MAILER
+        let response = await fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "Application/json;charset=utf-8",
@@ -31,9 +32,8 @@ export const Contact = () => {
             body: JSON.stringify(formDetails),
         });
         setButtonText("Send");
-        let result = await response.json();
         setFormDetails(formInitialDetails);
-        if (result.code === 200) {
+        if (response.ok) {
             setStatus({ success: true, message: 'Message sent successfully'});
         } else {
             setStatus({ success: false, message: 'Whoops, something happened. Please try again!'});
