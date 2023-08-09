@@ -13,19 +13,19 @@ export const Projects = () => {
             title: "Via",
             description: "Photo application, with location data utilizing Maps & AWS S3 & EXIF data",
             imgUrl: viaProject,
-            link: "https://gitlab.com/Rclaus/module3-project-gamma"
+            link: "https://gitlab.com/Rclaus/module3-project-gamma",
           },
           {
             title: "DealerShift",
             description: "Dealership Management Application",
             imgUrl: dealershiftProject,
-            link: "https://gitlab.com/Rclaus/DealerShift"
+            link: "https://gitlab.com/Rclaus/DealerShift",
           },
           {
             title: "Tasker",
             description: "Project Managing Solution",
             imgUrl: taskerProject,
-            link: "https://gitlab.com/Rclaus/Tasker"
+            link: "https://gitlab.com/Rclaus/Tasker",
           },
         ];
     return (
