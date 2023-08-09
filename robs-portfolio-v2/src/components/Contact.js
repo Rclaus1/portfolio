@@ -1,77 +1,126 @@
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import social from "../assets/img/social.svg";
+import contactImg from "../assets/img/contact-img.png"
 
 export const Contact = () => {
-    const formInitialDetails = {
-        name:'',
-        email:'',
-        message:'',
-    }
+    const [formState, setFormState] = useState({
+      name: '',
+      email: '',
+      message: ''
+    });
 
-    const [ formDetails, setFormDetails] = useState(formInitialDetails);
-    const [ buttonText, setButtonText] = useState('Send');
+    const [errorMessage, setErrorMessage] = useState(null);
+    const [buttonText, setButtonText] = useState('Send');
     const [status, setStatus] = useState({});
 
-    const onFormUpdate = (category, value) => {
-        setFormDetails({
-            ...formDetails,
-            [category]: value
-        })
-    }
+    const handleInputChange = (event) => {
+      setFormState({
+        ...formState,
+        [event.target.name]: event.target.value
+      });
+    };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setButtonText('Sending...');
-        let response = fetch("https://formspree.io/f/xaygenaq", {
-            method: "POST",
-            headers: {
-                "Content-Type": "Application/json;charset=utf-8",
-            },
-            body: JSON.stringify(formDetails),
-        });
-        setButtonText("Send");
-        let result = response.json();
-        setFormDetails(formInitialDetails);
-        if (result.code === 200) {
-            setStatus({ success: true, message: 'Message sent successfully'});
-        } else {
-            setStatus({ success: false, message: 'Whoops, something happened. Please try again!'});
-        }
+    const validateEmail = (email) => {
+      const re = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+      return re.test(email);
+    };
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      if (!formState.name || !formState.email || !formState.message) {
+        setErrorMessage("All fields must be filled out.");
+      } else if (!validateEmail(formState.email)) {
+        setErrorMessage("Invalid email format.");
+      } else {
+        setErrorMessage(null);
+        setButtonText('Sending...')
+        const formspreeEndpoint = process.env.REACT_APP_MAILER;
+
+        fetch(formspreeEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formState),
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.ok) {
+            setFormState({
+              name: '',
+              email: '',
+              message: ''
+            });
+            setButtonText("Send");
+            setStatus({ success: true, message: "Message Sent"});
+          } else {
+            setStatus({ success: false, message: "Something went wrong, please try again later."});
+          }
+        })
+        .catch((error) => {
+          setErrorMessage("An error occurred.");
+          console.error('Error:', error);
+        })
+      }
     };
 
     return (
-        <section className="contact" id="contact">
+        <section className="contact" id="connect">
             <Container>
-                <Row className="align-items-centered">
+                <Row className="align-items-center">
                     <Col md={6}>
-                        <img src={social} alt="Contact Us"/>
+                        <img src={contactImg} alt="Contact Us"/>
                     </Col>
                     <Col md={6}>
-                        <h2>Get in Touch</h2>
+                        <h2>Get In Touch</h2>
                         <form onSubmit={handleSubmit}>
                             <Row>
-                                <Col sm={6} className="px-1">
-                                    <input type="text" value={formDetails.name} placeholder="Name" onChange={(e) => onFormUpdate('name', e.target.value)} />
+                                <Col sm={12} className="px-1">
+                                    <input
+                                    className="form-input form-control"
+                                    type="text"
+                                    name="name"
+                                    placeholder="Name"
+                                    value={formState.name}
+                                    onChange={handleInputChange}
+                                    />
                                 </Col>
-                                <Col sm={6} className="px-1">
-                                    <input type="text" value={formDetails.email} placeholder="Email" onChange={(e) => onFormUpdate('email', e.target.value)} />
+                                <Col sm={12} className="px-1">
+                                    <input
+                                    className="form-input form-control"
+                                    type="email"
+                                    name="email"
+                                    placeholder="Email"
+                                    value={formState.email}
+                                    onChange={handleInputChange}
+                                    />
                                 </Col>
-                                <Col sm={6} className="px-1">
-                                    <textarea row="6" value={formDetails.message} placeholder="Message" onChange={(e) => onFormUpdate('message', e.target.value)} />
-                                    <button type="submit"><span>{buttonText}</span></button>
+                                <Col sm={12} className="px-1">
+                                    <textarea
+                                    className="form-input form-control text-input"
+                                    name="message"
+                                    placeholder="Message"
+                                    value={formState.message}
+                                    onChange={handleInputChange}
+                                    />
                                 </Col>
-                                {
-                                    status.message &&
-                                    <Col>
-                                    <p className={status.success === false ? "danger" : "success"}>{status.message}</p>
+                                <Col sm={12} className="px-1">
+                                    <button type="submit">
+                                    <span>{buttonText}</span>
+                                    </button>
+                                </Col>
+                                {status.message && (
+                                    <Col className="contact-status" sm={12}>
+                                        <p className={status.success === false ? "danger" : "success"}>
+                                            {status.message}
+                                        </p>
                                     </Col>
-                                }
+                                )}
                             </Row>
                         </form>
                     </Col>
                 </Row>
             </Container>
         </section>
-    )
+    );
 }

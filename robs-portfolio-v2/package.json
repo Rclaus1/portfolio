@@ -41,5 +41,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "http://Rclaus1.github.io/portfolio"
+  "homepage": "http://Rclaus1.github.io/portfolio",
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  }
 }
