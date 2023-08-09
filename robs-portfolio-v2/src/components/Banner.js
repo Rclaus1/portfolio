@@ -52,7 +52,8 @@ export const Banner = () => {
                             <span className="tagline"> Welcome to my Portfolio</span>
                             <h1>{`Hi I'm Rob `}<span className="wrap">{text}</span></h1>
                             <p>Thank you for taking time and visiting my page! You are welcome to explore and contact me if you have any questions. </p>
-                            <button onClick = {() => console.log('connect')}> Let's connect <ArrowRightCircle size={25} /> </button>
+                            <button onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
+                                 Let's connect <ArrowRightCircle size={25} /> </button>
                         </div>}
                         </TrackVisibility>
                     </Col>

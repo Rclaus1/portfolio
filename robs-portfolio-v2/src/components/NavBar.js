@@ -49,7 +49,9 @@ export const NavBar = () => {
                     <a href="https://github.com/Rclaus1"><img src={GitIcon} /></a>
                     <a href="https://gitlab.com/Rclaus"><img src={GitLogo} /></a>
                 </div>
-                <button className="vvd" onClick={() => console.log('connect')}><span> Let's Connect </span></button>
+                <button onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
+                    <span> Let's Connect </span>
+                </button>
             </span>
           </Navbar.Collapse>
         </Container>
