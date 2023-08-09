@@ -1,11 +1,16 @@
-Rob Claus Portfolio
+# Rob Claus Portfolio
+
 Welcome to my personal portfolio application! You are welcome to check out my site and reach out if you have any questions. 
 
-Availabile Scripts
-in the project directory, run:
-npm start
+## Availabile Scripts
+
+In the project directory, run:
+
+##npm start
 
 This will run the app in development mode.
 You can open http://localhost:3000 to view it in your browser.
 
-credit to webdecoded on Youtube.
+### 
+
+Credit to webdecoded on Youtube.
