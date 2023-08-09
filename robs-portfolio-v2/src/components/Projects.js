@@ -35,7 +35,7 @@ export const Projects = () => {
                     <Col>
                     <TrackVisibility>
                         {({ isVisible }) =>
-                        <div className={isVisible ? "animated__animated animate__slideInUp" : ""}>
+                        <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
                     <h2>Projects</h2>
                     <p> Lorem Ipsum </p>
                     </div>}

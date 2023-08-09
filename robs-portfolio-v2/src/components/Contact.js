@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import social from "../assets/img/social.svg";
+import 'animate.css';
+import TrackVisibility from 'react-on-screen';
 
 export const Contact = () => {
     const formInitialDetails = {
@@ -47,7 +49,12 @@ export const Contact = () => {
                         <img src={social} alt="Contact Us"/>
                     </Col>
                     <Col md={6}>
+                    <TrackVisibility>
+                        {({ isVisible }) =>
+                        <div className={isVisible ? "animate__animated animate__slideInRight" : ""}>
                         <h2>Get in Touch</h2>
+                        </div>}
+                        </TrackVisibility>
                         <form onSubmit={handleSubmit}>
                             <Row>
                                 <Col sm={6} className="px-1">
