@@ -23,7 +23,7 @@ export const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setButtonText('Sending...');
-        const url = REACT_APP_MAILER
+        const url = process.env.REACT_APP_MAILER
         let response = await fetch(url, {
             method: "POST",
             headers: {
