@@ -4,6 +4,8 @@ import { Tab, Container, Nav, Row, Col } from "react-bootstrap";
 import dealershiftProject from "../assets/img/dealershiftProject.png";
 import viaProject from "../assets/img/viaProject.png";
 import taskerProject from "../assets/img/taskerProject.svg";
+import 'animate.css';
+import TrackVisibility from 'react-on-screen';
 
 export const Projects = () => {
     const projects = [
@@ -31,8 +33,13 @@ export const Projects = () => {
             <Container>
                 <Row>
                     <Col>
+                    <TrackVisibility>
+                        {({ isVisible }) =>
+                        <div className={isVisible ? "animated__animated animate__slideInUp" : ""}>
                     <h2>Projects</h2>
                     <p> Lorem Ipsum </p>
+                    </div>}
+                    </TrackVisibility>
                     <Tab.Container id="projects-tabs" defaultActiveKey="first">
                     <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                         <Nav.Item>
