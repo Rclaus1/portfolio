@@ -26,7 +26,7 @@ export const Contact = () => {
         let response = await fetch(process.env.REACT_APP_MAILER, {
             method: "POST",
             headers: {
-                "Content-Type": "Application/json;charset=utf-8",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(formDetails),
         });
