@@ -37,7 +37,7 @@ export const Projects = () => {
                         {({ isVisible }) =>
                         <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
                     <h2>Projects</h2>
-                    <p> Lorem Ipsum </p>
+                    <p> Here are my current projects I have worked on <br></br> Click on the project to be taken to the repository! </p>
                     </div>}
                     </TrackVisibility>
                     <Tab.Container id="projects-tabs" defaultActiveKey="first">

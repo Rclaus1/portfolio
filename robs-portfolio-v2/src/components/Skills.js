@@ -13,6 +13,7 @@ import reactLogo from "../assets/img/reactLogo.svg";
 import sqlLogo from "../assets/img/sqlLogo.png";
 import colorSharp from "../assets/img/color-sharp.png";
 import { Row, Container, Col } from "react-bootstrap";
+import TrackVisibility from "react-on-screen";
 
 
 export const Skills = () => {
@@ -42,10 +43,15 @@ export const Skills = () => {
                 <Row>
                     <Col>
                     <div className="skill-bx">
-                        <h2>
-                            Skills
-                        </h2>
-                        <p> Lorem Ipsum <br></br> Lorem Ipsum </p>
+                        <TrackVisibility>
+                            {({ isVisible }) =>
+                            <div className={isVisible ? "animate__animated animate__heartBeat" : ""}>
+                            <h2>
+                                Skills
+                            </h2>
+                            <p> Here are my current languages, frameworks and libraries I have used </p>
+                            </div>}
+                        </TrackVisibility>
                         <Carousel responsive={responsive} infinte={true} className="skill-slider">
                             <div className="item">
                                 <img src={pythonLogo} alt="Image" />
