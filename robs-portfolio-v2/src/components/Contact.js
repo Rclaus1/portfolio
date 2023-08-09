@@ -26,13 +26,14 @@ export const Contact = () => {
         let response = await fetch(process.env.REACT_APP_MAILER, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "Application/json;charset=utf-8",
             },
             body: JSON.stringify(formDetails),
         });
         setButtonText("Send");
+        let result = await response.json();
         setFormDetails(formInitialDetails);
-        if (response.ok) {
+        if (result.code === 200) {
             setStatus({ success: true, message: 'Message sent successfully'});
         } else {
             setStatus({ success: false, message: 'Whoops, something happened. Please try again!'});
